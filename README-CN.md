@@ -12,10 +12,10 @@
 <summary>Screenshot</summary>
 
 Figma插件:
-<img src="https://github.com/tyaqing/pixsnap/assets/11229306/34282934-5846-4a61-9bdc-808c3ab00303">
+<img width="1233" alt="image" src="https://github.com/tyaqing/pixsnap/assets/11229306/cb613592-64dc-4da5-b112-7da7046ca4a5">
 
 Web应用:
-<img src="https://github.com/tyaqing/tyaqing/assets/11229306/5d90a0ac-3d30-44f1-8b98-2ff14a6b4e4d">
+<img width="1535" alt="image" src="https://github.com/tyaqing/pixsnap/assets/11229306/75885abf-7ff7-442f-8f73-6d06721babc3">
 
 </details>
 
@@ -47,7 +47,7 @@ yakirteng/pixsnap
   - 注意,如果部署在远程服务器,需要使用https协议访问;本地运行可以使用http协议
 - 上传您的图片🎉
 
-<img width="200" alt="image" src="https://github.com/tyaqing/pixsnap/assets/11229306/0478a033-61cd-44c9-abb3-909f4d58181e">
+<img width="412" alt="image" src="https://github.com/tyaqing/pixsnap/assets/11229306/d7ef7ce9-53ec-4a49-97c0-c51e5ec66ed0">
 
 ## 路线图 🗺️
 - [x] 支持web上传
