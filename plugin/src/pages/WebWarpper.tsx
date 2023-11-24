@@ -173,7 +173,7 @@ export function WebWrapper({ children }: { children: React.ReactNode }) {
                   <Box pos={'relative'}>
                     <LinkOverlay
                       target={'_blank'}
-                      href={'https://github.com/tyaqing/pixsnap/TestToken.md'}
+                      href={'https://github.com/tyaqing/pixsnap/blob/main/TestToken.md'}
                     >
                       <Button
                         size={'lg'}
