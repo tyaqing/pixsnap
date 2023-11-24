@@ -1,4 +1,4 @@
-<img  src="https://github.com/tyaqing/pixsnap/assets/11229306/0e88a41f-8d1d-4aa1-a501-7f3ae1b26098" width="50px"/>
+![logo](https://github.com/tyaqing/pixsnap/assets/11229306/7ac4ae04-861f-42b9-b4e4-fa5ec06cbbb9)
 
 # PixSnap
 
