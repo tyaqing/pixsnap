@@ -1,3 +1,4 @@
+![logo](https://github.com/tyaqing/pixsnap/assets/11229306/7ac4ae04-861f-42b9-b4e4-fa5ec06cbbb9)
 # PixSnap
 
 A Figma plugin for one-click upload of layers to cloud object storage
