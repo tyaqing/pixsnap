@@ -10,10 +10,12 @@ Demo: [Web Application](https://pixsnap.app) | [Figma Plugin](https://www.figma.
 <summary>Screenshot</summary>
 
 Figma Plugin:
-<img src="https://github.com/tyaqing/pixsnap/assets/11229306/34282934-5846-4a61-9bdc-808c3ab00303">
+<img width="1233" alt="image" src="https://github.com/tyaqing/pixsnap/assets/11229306/cb613592-64dc-4da5-b112-7da7046ca4a5">
+
 
 Web Application:
-<img src="https://github.com/tyaqing/tyaqing/assets/11229306/5d90a0ac-3d30-44f1-8b98-2ff14a6b4e4d">
+<img width="1535" alt="image" src="https://github.com/tyaqing/pixsnap/assets/11229306/75885abf-7ff7-442f-8f73-6d06721babc3">
+
 
 </details>
 
@@ -43,7 +45,8 @@ yakirteng/pixsnap
     - Please note, if deployed on a remote server, you need to access it using the HTTPS protocol; for local operation, the HTTP protocol can be used.
 - Upload your images 🎉
 
-<img width="200" alt="image" src="https://github.com/tyaqing/pixsnap/assets/11229306/0478a033-61cd-44c9-abb3-909f4d58181e">
+<img width="412" alt="image" src="https://github.com/tyaqing/pixsnap/assets/11229306/d7ef7ce9-53ec-4a49-97c0-c51e5ec66ed0">
+
 
 ## Roadmap 🗺️
 - [x] Support for web upload
