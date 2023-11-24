@@ -1,0 +1,88 @@
+import i18next from 'i18next'
+import { create } from 'zustand'
+import { createJSONStorage, persist } from 'zustand/middleware'
+
+import { useBucketStore } from '@/stores/useBucketStore.ts'
+import { Bucket } from '@/types/entity.ts'
+import { Format, PageType, PreviewUi } from '@/types/interface.ts'
+import { CustomStorage } from '@/utils/customStorage.ts'
+import { isWeb } from '@/utils/env.ts'
+
+export interface UploadInfo {
+  name: string
+  src: string
+  originalSize: number
+  size: number
+  fileType: string
+}
+export interface IStore {
+  setState: <T extends IStore>(payload: Partial<T>) => void
+  pageType: PageType
+  preview: PreviewUi[]
+  loading: boolean
+  url: string
+  scale: number
+  format: Format
+  uploadHistory: UploadInfo[]
+  destinationSheetVisible: boolean
+  path: string
+  selectedBucket?: Bucket
+  lang: string
+  localFile?: File
+  accessToken: string
+  changeBucket(bucketId: string): void
+  changeLang(lang: string): void
+}
+
+export const useGlobalStore = create<IStore>()(
+  persist(
+    (set) => ({
+      setState: (payload) => {
+        set(payload)
+      },
+      pageType: PageType.LOADING,
+      preview: [],
+      loading: false,
+      url: 'https://demo.pixsnap.app',
+      scale: 2,
+      format: Format.PNG,
+      uploadHistory: [],
+      lang: 'en-US',
+      path: '',
+      accessToken: '',
+      destinationSheetVisible: false,
+      changeBucket(bucketId: string) {
+        const bucketStore = useBucketStore.getState()
+        const find = bucketStore.bucketList.find((item) => item.bucket === bucketId)
+        const pathList = find?.path || ''
+        set({
+          path: pathList[0] || '',
+          selectedBucket: find,
+        })
+        bucketStore.setState({
+          pathList: find?.path,
+        })
+      },
+      changeLang(lang: string) {
+        i18next.changeLanguage(lang)
+        set({
+          lang,
+        })
+      },
+    }),
+    {
+      name: 'figmaConfig',
+      storage: createJSONStorage(() => (isWeb() ? localStorage : CustomStorage)),
+      partialize: (state) => ({
+        scale: state.scale,
+        format: state.format,
+        path: state.path,
+        uploadHistory: state.uploadHistory,
+        lang: state.lang,
+        selectedBucket: state.selectedBucket,
+        url: state.url,
+        accessToken: state.accessToken,
+      }),
+    },
+  ),
+)

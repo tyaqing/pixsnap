@@ -1,0 +1,30 @@
+name: Sync To Docker Hub
+
+on:
+  push:
+    tags:
+      - 'v*.*'
+
+permissions:
+  contents: read
+
+jobs:
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    # Build
+    - name: Build Docker And Push
+      run: |
+        cd server
+        docker build -t yakirteng/pixsnap:${{  github.ref_name }} .
+        docker tag yakirteng/pixsnap:${{  github.ref_name }} yakirteng/pixsnap:latest
+        docker login -u ${{ secrets.DOCKER_ACCOUNT_ID }} -p '${{ secrets.DOCKER_PASSWORD }}'
+        docker push yakirteng/pixsnap:${{  github.ref_name }}
+        docker push yakirteng/pixsnap:latest
+

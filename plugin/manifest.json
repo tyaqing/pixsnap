@@ -1,0 +1,20 @@
+{
+  "name": "PixSnap",
+  "id": "1301958586584763919",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "capabilities": [
+    "inspect"
+  ],
+  "enableProposedApi": false,
+  "editorType": [
+    "dev"
+  ],
+  "permissions": [],
+  "ui": "dist/index.html",
+  "networkAccess": {
+    "allowedDomains": ["*"],
+    "devAllowedDomains": ["*"],
+    "reasoning": "My plugin needs to access user-defined cdn domain."
+  }
+}
