@@ -5,6 +5,7 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 import { useBucketStore } from '@/stores/useBucketStore.ts'
 import { Bucket } from '@/types/entity.ts'
 import { Format, PageType, PreviewUi } from '@/types/interface.ts'
+import { LANG } from '@/utils/const.ts'
 import { CustomStorage } from '@/utils/customStorage.ts'
 import { isWeb } from '@/utils/env.ts'
 
@@ -47,7 +48,7 @@ export const useGlobalStore = create<IStore>()(
       scale: 2,
       format: Format.PNG,
       uploadHistory: [],
-      lang: 'en-US',
+      lang: process.env.LANG || LANG.EN_US,
       path: '',
       accessToken: '',
       destinationSheetVisible: false,

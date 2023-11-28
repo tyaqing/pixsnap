@@ -2,6 +2,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 import { useGlobalStore } from '@/stores/useGlobalStore.ts'
+import { LANG } from '@/utils/const.ts'
 const state = useGlobalStore.getState()
 // the translations
 // (tip move them in a JSON file and import them,
@@ -115,7 +116,7 @@ i18n.use(initReactI18next).init({
   interpolation: {
     escapeValue: false,
   },
-  fallbackLng: 'en-US',
+  fallbackLng: LANG.EN_US,
 })
 
 export default i18n

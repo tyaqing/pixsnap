@@ -3,6 +3,7 @@
   "id": "1301958586584763919",
   "api": "1.0.0",
   "main": "dist/code.js",
+  "ui": "dist/index.html",
   "capabilities": [
     "inspect"
   ],
@@ -11,7 +12,6 @@
     "dev"
   ],
   "permissions": [],
-  "ui": "dist/index.html",
   "networkAccess": {
     "allowedDomains": ["*"],
     "devAllowedDomains": ["*"],
