@@ -172,6 +172,23 @@ export function WebWrapper({ children }: { children: React.ReactNode }) {
                   </Box>
                   <Box pos={'relative'}>
                     <LinkOverlay
+                      href={
+                        'https://www.figma.com/community/plugin/1301958586584763919/pixsnap-upload-layer-to-s3-cloudflare'
+                      }
+                    >
+                      <Button
+                        size={'lg'}
+                        fontWeight={'normal'}
+                        px={6}
+                        colorScheme={'cyan'}
+                        leftIcon={<FiFigma w={4} h={4} />}
+                      >
+                        {t('Figma Plugin')}
+                      </Button>
+                    </LinkOverlay>
+                  </Box>
+                  <Box pos={'relative'}>
+                    <LinkOverlay
                       target={'_blank'}
                       href={'https://github.com/tyaqing/pixsnap/blob/main/TestToken.md'}
                     >

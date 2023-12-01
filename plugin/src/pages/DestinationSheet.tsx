@@ -154,33 +154,71 @@ function ConfigTab() {
       .matches(/http(s)?:\/\/.+/, 'Invalid URL'),
     accessToken: Yup.string().required('Required'),
   })
+
+  const toggleTrialMode = (setValues: any) => {
+    let defaultValues = {
+      url: 'https://demo.pixsnap.app',
+      accessToken:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwaXhzbmFwIiwiY2xhaW1zIjp7ImFsbG93ZWQtYnVja2V0IjpbImNmLXIydGVzdCIsInRlc3QiXSwiYWxsb3dlZC1wYXRoIjpbInN0YXRpYyJdfSwidXNlciI6InBpeHNuYXAiLCJpYXQiOjE3MDA3OTM1MzQsImV4cCI6MTczMjMyOTUzNH0.xaxmjZIqIfvI0FgVpNcBjoZbjwPoTfSPRWsFKv4GIX8',
+    }
+    if (globalStore.trialMode) {
+      defaultValues = {
+        url: '',
+        accessToken: '',
+      }
+    }
+    globalStore.setState({
+      trialMode: !globalStore.trialMode,
+    })
+
+    setValues(defaultValues)
+    globalStore.setState(defaultValues)
+  }
   return (
     <Formik
       validationSchema={validationSchema}
       initialValues={initialValues}
       onSubmit={handleSubmit}
     >
-      {({ handleSubmit, errors, touched }) => (
+      {({ handleSubmit, errors, touched, setValues }) => (
         <Stack>
-          <FormControl isRequired isInvalid={!!errors.url && touched.url}>
-            <FormLabel htmlFor={'url'} fontSize={'sm'}>
-              URL
-            </FormLabel>
-            <Field as={Input} size={'sm'} name={'url'} id={'url'} />
-            <FormErrorMessage>{errors.url}</FormErrorMessage>
-          </FormControl>
-          <FormControl isRequired isInvalid={!!errors.accessToken && touched.accessToken}>
-            <FormLabel fontSize={'sm'} htmlFor={'accessToken'}>
-              AccessToken
-            </FormLabel>
-            <Field as={Textarea} rows={7} size={'sm'} name={'accessToken'} id={'accessToken'} />
-            <FormErrorMessage>{errors.accessToken}</FormErrorMessage>
-          </FormControl>
-          <FormControl>
-            <Button w={'full'} onClick={() => handleSubmit()} type={'submit'} size={'sm'}>
-              {t('Save')}
-            </Button>
-          </FormControl>
+          {!globalStore.trialMode ? (
+            <>
+              <FormControl isRequired isInvalid={!!errors.url && touched.url}>
+                <FormLabel htmlFor={'url'} fontSize={'sm'}>
+                  URL
+                </FormLabel>
+                <Field as={Input} size={'sm'} name={'url'} id={'url'} />
+                <FormErrorMessage>{errors.url}</FormErrorMessage>
+              </FormControl>
+              <FormControl isRequired isInvalid={!!errors.accessToken && touched.accessToken}>
+                <FormLabel fontSize={'sm'} htmlFor={'accessToken'}>
+                  AccessToken
+                </FormLabel>
+                <Field as={Textarea} rows={7} size={'sm'} name={'accessToken'} id={'accessToken'} />
+                <FormErrorMessage>{errors.accessToken}</FormErrorMessage>
+              </FormControl>
+              <FormControl>
+                <VStack>
+                  <Button w={'full'} onClick={() => handleSubmit()} type={'submit'} size={'sm'}>
+                    {t('Save')}
+                  </Button>
+                </VStack>
+              </FormControl>
+            </>
+          ) : (
+            <Center>
+              <Text color={'gray'}>{t('Trial mode')}</Text>
+            </Center>
+          )}
+          <Button
+            w={'full'}
+            onClick={() => toggleTrialMode(setValues)}
+            size={'sm'}
+            variant={'ghost'}
+          >
+            {globalStore.trialMode ? t('Exit trial mode') : t('Enter trial mode')}
+          </Button>
         </Stack>
       )}
     </Formik>

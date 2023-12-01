@@ -22,12 +22,12 @@ const resources = {
       'image upload experience!': '图片上传体验!',
       Save: '保存',
       'Not Selected': '未选择',
-      'Open-source, customizable, MIT licensed': '开源，可定制，MIT许可',
-      'User-friendly: Figma Plugin and Web App': '用户友好：Figma插件和Web应用',
-      'Compatible with various cloud storages': '兼容各种云存储',
-      'Auto image compression: mozjpeg, tinypng': '自动图像压缩：mozjpeg，tinypng',
-      'Quick Docker deployment in minutes': '快速Docker部署在几分钟内',
-      'Team-friendly: Easy permission configuration': '团队友好：简单的权限配置',
+      'Open-source, customizable, MIT licensed': '完全开源，可定制，MIT许可',
+      'User-friendly: Figma Plugin and Web App': '支持即时设计、Figma插件和Web应用',
+      'Compatible with various cloud storages': '支持腾讯云、阿里云，AWS对象存储，兼容S3协议',
+      'Auto image compression: mozjpeg, tinypng': '自动图像压缩，支持tinypng、mozjpeg',
+      'Quick Docker deployment in minutes': '3分钟完成Docker部署接入',
+      'Team-friendly: Easy permission configuration': '团队友好：支持上传权限配置',
       'PNG, JPG or SVG up to 5MB': '支持5M以内的PNG、JPG、SVG 文件',
       'Please select a layer,': '请选择一个图层，',
       'Drop your file here,': '拖动文件到这，',
@@ -39,6 +39,9 @@ const resources = {
       Clear: '清空',
       'PixSnap is a robust image hosting tool that enables fast image uploads on the web and Figma. It automatically compresses images and integrates with popular object storage services like S3 and Cloudflare.':
         'PixSnap是一款强大的图床工具，可在Web网页和Figma中快速上传图片，并自动压缩，集成多种对象存储服务。',
+      'Trial mode': '试用模式',
+      'Exit trial mode': '退出试用模式',
+      'Enter trial mode': '进入试用模式',
     },
   },
   'en-US': {
@@ -106,6 +109,9 @@ const resources = {
       Clear: 'クリア',
       'PixSnap is a robust image hosting tool that enables fast image uploads on the web and Figma. It automatically compresses images and integrates with popular object storage services like S3 and Cloudflare.':
         'PixSnapは、WebやFigmaでの高速な画像アップロードを可能にする堅牢な画像ホスティングツールです。画像を自動的に圧縮し、S3やCloudflareなどの人気のあるオブジェクトストレージサービスと統合します。',
+      'Trial mode': '試用モード',
+      'Exit trial mode': '試用モードを終了する',
+      'Enter trial mode': '試用モードに入る',
     },
   },
 }
