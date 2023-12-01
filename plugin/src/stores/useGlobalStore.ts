@@ -5,6 +5,7 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 import { useBucketStore } from '@/stores/useBucketStore.ts'
 import { Bucket } from '@/types/entity.ts'
 import { Format, PageType, PreviewUi } from '@/types/interface.ts'
+import { LANG } from '@/utils/const.ts'
 import { CustomStorage } from '@/utils/customStorage.ts'
 import { isWeb } from '@/utils/env.ts'
 
@@ -32,6 +33,7 @@ export interface IStore {
   accessToken: string
   changeBucket(bucketId: string): void
   changeLang(lang: string): void
+  trialMode: boolean
 }
 
 export const useGlobalStore = create<IStore>()(
@@ -43,12 +45,13 @@ export const useGlobalStore = create<IStore>()(
       pageType: PageType.LOADING,
       preview: [],
       loading: false,
-      url: 'https://demo.pixsnap.app',
+      url: '',
       scale: 2,
       format: Format.PNG,
       uploadHistory: [],
-      lang: 'en-US',
+      lang: import.meta.env.VITE_LANG || LANG.EN_US,
       path: '',
+      trialMode: true,
       accessToken: '',
       destinationSheetVisible: false,
       changeBucket(bucketId: string) {
@@ -82,6 +85,7 @@ export const useGlobalStore = create<IStore>()(
         selectedBucket: state.selectedBucket,
         url: state.url,
         accessToken: state.accessToken,
+        trialMode: state.trialMode,
       }),
     },
   ),

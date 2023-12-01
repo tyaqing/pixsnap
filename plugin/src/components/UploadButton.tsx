@@ -23,6 +23,11 @@ export default function UploadButton() {
       toast('Please set bucket and path first.', true)
       return
     }
+    // check url and token
+    if (!store.url || !store.accessToken) {
+      toast('Please set url and accessToken first.', true)
+      return
+    }
     store.setState({ loading: true })
     let file: File
     if (store.localFile) {

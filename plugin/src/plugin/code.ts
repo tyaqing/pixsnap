@@ -50,33 +50,35 @@ const getPreview = async (node: SceneNode): Promise<Preview> => {
   }
 }
 
-if (figma.editorType !== 'dev' && figma.currentPage.selection.length <= 0) {
-  figma.notify('Select Layer', {
-    error: true,
-    timeout: 2000,
-  })
-} else {
-  figma.showUI(__html__, { themeColors: true, height: 320, width: 560 })
-  Promise.all(figma.currentPage.selection.map((node) => getPreview(node))).then((preview) => {
-    figma.ui.postMessage({
-      type: PluginMessageType.PREVIEW,
-      data: preview,
-    })
-  })
-}
+// if (figma.editorType !== 'dev' && figma.currentPage.selection.length <= 0) {
+//   figma.notify('Select Layer', {
+//     error: true,
+//     timeout: 2000,
+//   })
+// } else {
+//
+// }
 
-if (figma.editorType === 'dev') {
-  figma.on('selectionchange', () => {
-    if (figma.currentPage.selection.length > 0) {
-      Promise.all(figma.currentPage.selection.map((node) => getPreview(node))).then((preview) => {
-        figma.ui.postMessage({
-          type: PluginMessageType.PREVIEW,
-          data: preview,
-        })
-      })
-    }
+figma.showUI(__html__, { themeColors: true, height: 660, width: 300 })
+Promise.all(figma.currentPage.selection.map((node) => getPreview(node))).then((preview) => {
+  figma.ui.postMessage({
+    type: PluginMessageType.PREVIEW,
+    data: preview,
   })
-}
+})
+
+// if (figma.editorType === 'dev') {
+figma.on('selectionchange', () => {
+  if (figma.currentPage.selection.length > 0) {
+    Promise.all(figma.currentPage.selection.map((node) => getPreview(node))).then((preview) => {
+      figma.ui.postMessage({
+        type: PluginMessageType.PREVIEW,
+        data: preview,
+      })
+    })
+  }
+})
+// }
 
 figma.ui.onmessage = async (msg: UiMessage) => {
   const { type, data, messageId } = msg

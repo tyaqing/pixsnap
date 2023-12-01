@@ -1,0 +1,7 @@
+{
+  "name": "PixSnap | 一键上传到对象存储",
+  "id": "1301958586584763919",
+  "api": "1.0.0",
+  "main": "../dist/code.js",
+  "ui": "../dist/index.html"
+}
