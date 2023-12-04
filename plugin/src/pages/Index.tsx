@@ -1,6 +1,7 @@
 import {
   As,
   Center,
+  Divider,
   HStack,
   Icon,
   Link,
@@ -31,17 +32,10 @@ const App = () => {
     )
   }
   return (
-    <VStack
-      w={'full'}
-      h={'100%'}
-      mt={206}
-      pt={4}
-      pb={4}
-      overflowY={'scroll'}
-      alignItems={'stretch'}
-    >
+    <VStack w={'full'} h={'100%'} mt={10} pt={4} pb={4} overflowY={'scroll'} alignItems={'stretch'}>
       <Header />
       <UploadPreview />
+      <Divider />
       <UploadHistory />
       <Spacer />
       <CopywriterFooter />

@@ -23,6 +23,8 @@ export interface IStore {
   loading: boolean
   url: string
   scale: number
+  scaleList: number[]
+  formatList: Format[]
   format: Format
   uploadHistory: UploadInfo[]
   destinationSheetVisible: boolean
@@ -47,6 +49,8 @@ export const useGlobalStore = create<IStore>()(
       loading: false,
       url: '',
       scale: 2,
+      formatList: [Format.PNG],
+      scaleList: [1, 2, 3],
       format: Format.PNG,
       uploadHistory: [],
       lang: import.meta.env.VITE_LANG || LANG.EN_US,

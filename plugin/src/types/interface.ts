@@ -52,6 +52,7 @@ export enum Format {
   JPG = 'jpg',
   SVG = 'svg',
   WEBP = 'webp',
+  AVIF = 'avif',
 }
 
 export enum PageType {

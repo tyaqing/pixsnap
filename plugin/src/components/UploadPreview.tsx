@@ -6,16 +6,20 @@ import {
   Icon,
   IconButton,
   Square,
+  Tag,
   Text,
   useColorModeValue,
   VStack,
 } from '@chakra-ui/react'
 import { useDropzone } from 'react-dropzone'
 import { useTranslation } from 'react-i18next'
-import { FiUploadCloud, FiXCircle } from 'react-icons/fi'
+import { FiShuffle, FiUploadCloud, FiXCircle } from 'react-icons/fi'
 
+import UploadButton from '@/components/UploadButton.tsx'
 import { useGlobalStore } from '@/stores/useGlobalStore.ts'
+import { Format } from '@/types/interface.ts'
 import { toBase64 } from '@/utils/base64.ts'
+import { FORMAT_LIST, SCALE_LIST } from '@/utils/const.ts'
 import { isWeb } from '@/utils/env.ts'
 import { toast } from '@/utils/message.ts'
 
@@ -59,6 +63,38 @@ export function UploadPreview() {
 
   const store = useGlobalStore()
   const { t } = useTranslation()
+  const onScaleChange = (scale: number) => {
+    // only allow three
+    if (store.scaleList.length === 3 && !store.scaleList.includes(scale)) {
+      toast(t('Only three scales are allowed'), true)
+      return
+    }
+    if (store.scaleList.includes(scale)) {
+      store.setState({
+        scaleList: store.scaleList.filter((item) => item !== scale),
+      })
+    } else {
+      store.setState({
+        scaleList: [...store.scaleList, scale],
+      })
+    }
+  }
+  const onFormatChange = (format: Format) => {
+    // only allow three
+    if (store.formatList.length === 3 && !store.formatList.includes(format)) {
+      toast(t('Only three formats are allowed'), true)
+      return
+    }
+    if (store.formatList.includes(format)) {
+      store.setState({
+        formatList: store.formatList.filter((item) => item !== format),
+      })
+    } else {
+      store.setState({
+        formatList: [...store.formatList, format],
+      })
+    }
+  }
 
   return (
     <VStack px={4} alignItems={'stretch'}>
@@ -126,6 +162,34 @@ export function UploadPreview() {
           )}
         </Center>
       </AspectRatio>
+      <UploadButton />
+      <HStack>
+        {FORMAT_LIST.map((item, index) => (
+          <Tag
+            onClick={() => onFormatChange(item.value)}
+            cursor={'pointer'}
+            colorScheme={store.formatList.includes(item.value) ? 'green' : 'gray'}
+            key={index}
+          >
+            <HStack>
+              {item.isExtension && <FiShuffle />}
+              <Text> {item.name}</Text>
+            </HStack>
+          </Tag>
+        ))}
+      </HStack>
+      <HStack>
+        {SCALE_LIST.map((item, index) => (
+          <Tag
+            onClick={() => onScaleChange(item)}
+            cursor={'pointer'}
+            colorScheme={store.scaleList.includes(item) ? 'blue' : 'gray'}
+            key={index}
+          >
+            x{item}
+          </Tag>
+        ))}
+      </HStack>
     </VStack>
   )
 }

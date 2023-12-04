@@ -15,6 +15,16 @@ export const FORMAT_LIST = [
     name: 'SVG',
     value: Format.SVG,
   },
+  {
+    name: 'WEBP',
+    value: Format.WEBP,
+    isExtension: true,
+  },
+  {
+    name: 'AVIF',
+    value: Format.AVIF,
+    isExtension: true,
+  },
 ]
 
 export const HISTORY_NUM = 10
